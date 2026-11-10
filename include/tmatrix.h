@@ -108,6 +108,9 @@ public:
               throw invalid_argument("Row pointers must be nondecreasing");
       }
 
+      if (r_ptr.front() != 0 || r_ptr.back() != vals.size())
+          throw invalid_argument("Invalid row pointer");
+
       for (size_t col : c_idx) {
           if (col >= c)
               throw out_of_range("Column index is out of range");
